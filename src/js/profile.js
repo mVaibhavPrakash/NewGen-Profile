@@ -1,10 +1,27 @@
 import axios from 'axios'
 
 const EditProfile = (obj, setStatus) => {
+  let socials = {
+    twitter: obj.twitter,
+    linkedin: obj.linkedin,
+    stackoverflow: obj.stackoverflow,
+    github: obj.github,
+    personal: obj.personal,
+    youtube: obj.youtube,
+  }
+
+  obj.socials = socials
+  delete obj.twitter
+  delete obj.linkedin
+  delete obj.stack
+  delete obj.github
+  delete obj.personal
+  delete obj.youtube
+
   axios
     .post({
       method: 'POST',
-      url: '/signup',
+      url: '/profile/post',
       data: obj,
     })
     .then((res) => {
